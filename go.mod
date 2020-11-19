@@ -11,6 +11,7 @@ require (
 	github.com/gogo/protobuf v1.3.1 // indirect
 	github.com/golang/protobuf v1.4.3 // indirect
 	github.com/json-iterator/go v1.1.10 // indirect
+	github.com/juju/ratelimit v1.0.1 // indirect
 	github.com/modern-go/reflect2 v1.0.1 // indirect
 	github.com/zieckey/etcdsync v0.0.0-20180810020013-cd5b26bc05a1 // indirect
 	go.uber.org/multierr v1.6.0 // indirect
