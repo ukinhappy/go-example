@@ -7,7 +7,8 @@ import (
 	"time"
 )
 
-func limit() {
+// redis实现滑动窗口
+func snowflake() {
 
 	var luatxt = `
 local ratelimit_info = redis.pcall('HMGET',KEYS[1],'last_time','current_token')
@@ -78,5 +79,40 @@ return result`
 	}
 	wait.Wait()
 	fmt.Println(redis.StringMap(p.Get().Do("hgetall", "limt_test")))
+
+}
+
+//incrlua 自增1
+func incrlua() {
+	var luatxt = `
+local limit = tonumber(ARGV[1])
+local window = tonumber(ARGV[2])
+local current = redis.call("GET", KEYS[1])
+
+if current ~= false and tonumber(current) >= limit then
+	return 0
+end
+
+local current = redis.call("INCRBY", KEYS[1], 1)
+if current == 1 then
+    redis.call("expire", KEYS[1], window)
+    return 1
+elseif current > limit then
+    return 0
+else
+    return 1
+end`
+
+	var wait sync.WaitGroup
+	p := dial()
+	for i := 0; i < 8; i++ {
+		wait.Add(1)
+		go func() {
+			defer wait.Done()
+			fmt.Println(redis.Int64(p.Get().Do("eval", luatxt, 1, "limt_test", 5, 1)))
+		}()
+	}
+	wait.Wait()
+	fmt.Println(redis.String(p.Get().Do("get", "limt_test")))
 
 }

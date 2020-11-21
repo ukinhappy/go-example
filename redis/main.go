@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"github.com/gomodule/redigo/redis"
-	"sync"
 	"time"
 )
 
@@ -44,6 +43,7 @@ func lua() {
 }
 func main() {
 	//lua()
-	limit()
+	//snowflake()
+	incrlua()
 }
 
