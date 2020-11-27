@@ -3,9 +3,9 @@ package main
 import (
 	"log"
 
+	pb "go-example/grpc/pkg/proto"
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
-	pb "grpc-hello-world/grpc-gateway-two-port/proto"
 )
 // http 请求
 

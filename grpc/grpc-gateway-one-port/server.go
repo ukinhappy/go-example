@@ -3,15 +3,15 @@ package main
 import (
 	"log"
 
-	"net"
+	"github.com/grpc-ecosystem/grpc-gateway/runtime"
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials"
-	"github.com/grpc-ecosystem/grpc-gateway/runtime"
+	"net"
 
-	pb "grpc-hello-world/grpc-gateway-one-port/proto"
-	"grpc-hello-world/grpc-gateway-one-port/pkg/util"
 	"crypto/tls"
+	pb "go-example/grpc/pkg/proto"
+	"go-example/grpc/pkg/util"
 	"net/http"
 )
 

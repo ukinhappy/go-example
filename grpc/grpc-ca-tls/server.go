@@ -7,7 +7,7 @@ import (
 
 	"google.golang.org/grpc"
 
-	"grpc-hello-world/grpc-ca-tls/proto"
+	"go-example/grpc/pkg/proto"
 	"google.golang.org/grpc/credentials"
 	"crypto/x509"
 	"io/ioutil"

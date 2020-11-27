@@ -8,7 +8,7 @@ import (
 	fmt "fmt"
 	proto "github.com/golang/protobuf/proto"
 	grpc "google.golang.org/grpc"
-	_ "grpc-hello-world/grpc-gateway/proto/google/api"
+	_ "go-example/grpc/pkg/proto/google/api"
 	math "math"
 )
 

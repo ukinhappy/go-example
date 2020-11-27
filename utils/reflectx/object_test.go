@@ -1,7 +1,7 @@
 package reflectx
 
 import (
-	"git.dz11.com/im/timex/timex"
+	"go-example/utils/timex"
 	"testing"
 	"time"
 )

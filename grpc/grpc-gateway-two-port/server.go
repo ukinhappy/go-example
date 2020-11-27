@@ -3,13 +3,13 @@ package main
 import (
 	"log"
 
+	"github.com/grpc-ecosystem/grpc-gateway/runtime"
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
-	"github.com/grpc-ecosystem/grpc-gateway/runtime"
 
-	"grpc-hello-world/grpc-gateway-two-port/proto"
-	"net/http"
+	"go-example/grpc/pkg/proto"
 	"net"
+	"net/http"
 	"time"
 )
 

@@ -7,7 +7,7 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials"
 
-	pb "grpc-hello-world/grpc-gateway-one-port/proto"
+	pb "go-example/grpc/pkg/proto"
 )
 // http 请求
 
