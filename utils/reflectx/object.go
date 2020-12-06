@@ -2,7 +2,7 @@ package reflectx
 
 import (
 	"errors"
-	"go-example/utils/timex"
+	"github.com/ukinhappy/go-example/utils/timex"
 	"reflect"
 	"strconv"
 	"time"

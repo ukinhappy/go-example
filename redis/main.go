@@ -6,15 +6,18 @@ import (
 )
 
 // dial dials connections then returns pool.
-func dial() *redis.Pool {
+func dial(addr, pw string) *redis.Pool {
 	dialOptions := []redis.DialOption{
 		redis.DialConnectTimeout(time.Second),
 		redis.DialReadTimeout(time.Second),
 		redis.DialWriteTimeout(time.Second),
 	}
+	if pw != "" {
+		dialOptions = append(dialOptions, redis.DialPassword(pw))
+	}
 	return &redis.Pool{
 		Dial: func() (redis.Conn, error) {
-			c, err := redis.Dial("tcp", "127.0.0.1:6379", dialOptions...)
+			c, err := redis.Dial("tcp", addr, dialOptions...)
 			if err != nil {
 				return nil, err
 			}
@@ -27,10 +30,9 @@ func dial() *redis.Pool {
 	}
 }
 
-
 func main() {
 	//lua()
 	//snowflake()
-	incrlua()
-}
+	//incrlua()
 
+}

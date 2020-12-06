@@ -1,7 +1,7 @@
 package lockx
 
 import (
-	"go-example/utils/randx"
+	"github.com/ukinhappy/go-example/utils/randx"
 	redis "gopkg.in/redis.v5"
 	"sync"
 	"time"

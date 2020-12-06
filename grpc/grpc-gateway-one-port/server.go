@@ -10,8 +10,8 @@ import (
 	"net"
 
 	"crypto/tls"
-	pb "go-example/grpc/pkg/proto"
-	"go-example/grpc/pkg/util"
+	pb "github.com/ukinhappy/go-example/grpc/pkg/proto"
+	"github.com/ukinhappy/go-example/grpc/pkg/util"
 	"net/http"
 )
 

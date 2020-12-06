@@ -5,7 +5,7 @@ import (
 
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
-	pb "go-example/grpc/pkg/proto"
+	pb "github.com/ukinhappy/go-example/grpc/pkg/proto"
 	"google.golang.org/grpc/credentials"
 	"crypto/tls"
 	"crypto/x509"

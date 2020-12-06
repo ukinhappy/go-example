@@ -7,7 +7,7 @@ import (
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
 
-	"go-example/grpc/pkg/proto"
+	"github.com/ukinhappy/go-example/grpc/pkg/proto"
 	"net"
 	"net/http"
 	"time"
