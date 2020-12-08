@@ -20,7 +20,7 @@ func main()  {
 
 	hello(s1...)
 	fmt.Println(s1)
-s1 =[]int{1,2,3,4,5}
+	s1 =[]int{1,2,3,4,5}
 	var r [5]int
 	for i, v := range s1 {
 		if i == 0 {
