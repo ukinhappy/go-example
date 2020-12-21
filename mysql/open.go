@@ -1,16 +1,12 @@
 package main
 
 import (
+	"database/sql"
 	"fmt"
 	_ "github.com/go-sql-driver/mysql"
-	"github.com/jinzhu/gorm"
 )
 
-func main() {
-	db, err := gorm.Open("mysql", "root:123456@tcp(127.0.0.1)/ukinhappy_test?charset=utf8mb4&loc=Asia%2FShanghai&parseTime=true")
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
-	err = db.DB().Ping()
+func Open(addr, user, pwd, dbname string) (*sql.DB, error) {
+	db, err := sql.Open("mysql", fmt.Sprintf("%s:%s@tcp(%s)/%s", user, pwd, addr, dbname)+"?charset=utf8mb4&loc=Asia%2FShanghai&parseTime=true")
+	return db, err
 }
