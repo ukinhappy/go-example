@@ -24,6 +24,7 @@ require (
 	github.com/grpc-ecosystem/grpc-gateway v1.16.0
 	github.com/jinzhu/gorm v1.9.16
 	github.com/juju/ratelimit v1.0.1
+	github.com/ledongthuc/pdf v0.0.0-20200323191019-23c5852adbd2 // indirect
 	github.com/onsi/ginkgo v1.14.2 // indirect
 	github.com/onsi/gomega v1.10.3 // indirect
 	golang.org/x/crypto v0.0.0-20201117144127-c1f2f97bffc9 // indirect
