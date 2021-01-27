@@ -35,4 +35,5 @@ require (
 	google.golang.org/genproto v0.0.0-20201110150050-8816d57aaa9a // indirect
 	google.golang.org/grpc v1.33.2
 	gopkg.in/redis.v5 v5.2.9
+	stathat.com/c/consistent v1.0.0 // indirect
 )
