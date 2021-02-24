@@ -8,3 +8,4 @@
 | [excel](./excel/excelize.go)             | excel                                                        |    |
 | [grace](./grace/main.go)                 | 平滑重启                                                      |    |
 | [pdf](./pdf/pdf.go)                      | pdf的读取                                                     |    |
+| [image](./image/image.go)                | 图片处理                                                      |    |
