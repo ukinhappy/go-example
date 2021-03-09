@@ -10,7 +10,6 @@ import (
 	"github.com/ukinhappy/go-example/grpc/pkg/proto"
 )
 
-
 type HelloWorldService struct{}
 
 func (s *HelloWorldService) SayHelloWorld(ctx context.Context, r *proto.HelloWorldRequest) (*proto.HelloWorldResponse, error) {
