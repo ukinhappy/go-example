@@ -6,6 +6,8 @@ import (
 )
 
 func main() {
+	query()
+	return
 	fmt.Println("获取所有值")
 	allresult()
 	fmt.Println("获取服务器版本号")
@@ -16,6 +18,25 @@ func main() {
 	dbname()
 }
 
+func query() {
+	db, err := Open("127.0.0.1", "root", "MYSQL123456", "ukinhappy_test")
+	if err != nil {
+		log.Fatal(err)
+
+	}
+	// 查询所有的变量
+	sql := "select id from `test` where value = ?"
+	r := db.QueryRow(sql, "8")
+	var value int
+	for {
+		if err:=r.Scan(&value); err != nil {
+			fmt.Println(err)
+			return
+		}
+		fmt.Println(value)
+	}
+
+}
 func allresult() {
 	db, err := Open("127.0.0.1", "root", "MYSQL123456", "ukinhappy_test")
 	if err != nil {

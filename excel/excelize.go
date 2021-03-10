@@ -6,8 +6,9 @@ import (
 	"math/rand"
 )
 
-func main() {
 
+func main() {
+	read()
 }
 
 func read()  {

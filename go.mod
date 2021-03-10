@@ -7,7 +7,7 @@ replace google.golang.org/grpc v1.34.0 => google.golang.org/grpc v1.26.0
 replace github.com/coreos/bbolt v1.3.4 => go.etcd.io/bbolt v1.3.4
 
 require (
-	github.com/360EntSecGroup-Skylar/excelize/v2 v2.3.1
+	github.com/360EntSecGroup-Skylar/excelize/v2 v2.3.2
 	github.com/adamzy/cedar-go v0.0.0-20170805034717-80a9c64b256d
 	github.com/coreos/bbolt v1.3.4 // indirect
 	github.com/coreos/etcd v3.3.25+incompatible
@@ -39,6 +39,7 @@ require (
 	github.com/ledongthuc/pdf v0.0.0-20200323191019-23c5852adbd2
 	github.com/prometheus/client_golang v1.9.0 // indirect
 	github.com/tmc/grpc-websocket-proxy v0.0.0-20201229170055-e5319fda7802 // indirect
+	github.com/xuri/efp v0.0.0-20210128032744-13be4fd5dcb5 // indirect
 	go.uber.org/multierr v1.6.0 // indirect
 	go.uber.org/zap v1.16.0 // indirect
 	golang.org/x/crypto v0.0.0-20210220033148-5ea612d1eb83 // indirect
@@ -49,6 +50,8 @@ require (
 	golang.org/x/time v0.0.0-20210220033141-f8bda1e9f3ba // indirect
 	google.golang.org/genproto v0.0.0-20210302174412-5ede27ff9881 // indirect
 	google.golang.org/grpc v1.34.0
+	gorm.io/driver/mysql v1.0.4 // indirect
+	gorm.io/gorm v1.21.3 // indirect
 	sigs.k8s.io/yaml v1.2.0 // indirect
 	stathat.com/c/consistent v1.0.0
 )
