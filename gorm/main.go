@@ -1,11 +1,23 @@
 package main
 
 import (
+	"database/sql"
 	"fmt"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"log"
+	"time"
 )
+
+type User struct {
+	gorm.Model
+	Name         string
+	Email        string
+	Age          uint8
+	Birthday     *time.Time
+	MemberNumber sql.NullString
+	ActivedAt    sql.NullTime
+}
 
 func main() {
 	// 参考 https://github.com/go-sql-driver/mysql#dsn-data-source-name 获取详情
@@ -14,23 +26,26 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	value := new(struct {
-		Book  string
-		Price int
-	})
-	if err := db.Table("book").Where("book =?", "go-zero").First(&value).Error; err != nil {
+	db.AutoMigrate(&User{})
 
-		log.Fatal(err)
+	u1:=&User{Name: "n1",Email: "e1"}
+	result := db.Create(u1)
+	fmt.Println(u1)
+	fmt.Println(result.Error, result.RowsAffected)
+
+
+	//批量插入
+	var users = []User{{Name: "jinzhu1"}, {Name: "jinzhu2"}, {Name: "jinzhu3"}}
+	db.Create(&users)
+	for _, user := range users {
+		fmt.Println(user.ID)
 	}
-	fmt.Println(value)
 
-	value = new(struct {
-		Book  string
-		Price int
-	})
+	//
+	db.Model(u1).Update("name","N1")
+	db.Model(&User{}).Update("name","N1")
 
-	if err := db.Table("book").Where("book= 1 or 1 = 1 ").First(&value).Error; err != nil {
-		log.Fatal(err)
-	}
-	fmt.Println(value)
+	//查询
+	result =db.Last(u1)
+	fmt.Println(u1)
 }
