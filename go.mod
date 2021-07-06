@@ -8,6 +8,7 @@ replace github.com/coreos/bbolt v1.3.4 => go.etcd.io/bbolt v1.3.4
 
 require (
 	github.com/360EntSecGroup-Skylar/excelize/v2 v2.3.2
+	github.com/StackExchange/wmi v0.0.0-20210224194228-fe8f1750fd46 // indirect
 	github.com/adamzy/cedar-go v0.0.0-20170805034717-80a9c64b256d
 	github.com/coreos/bbolt v1.3.4 // indirect
 	github.com/coreos/etcd v3.3.25+incompatible
@@ -24,10 +25,11 @@ require (
 	github.com/facebookgo/stats v0.0.0-20151006221625-1b76add642e4 // indirect
 	github.com/facebookgo/subset v0.0.0-20200203212716-c811ad88dec4 // indirect
 	github.com/go-echarts/go-echarts/v2 v2.2.3
+	github.com/go-ole/go-ole v1.2.5 // indirect
 	github.com/go-sql-driver/mysql v1.5.0
 	github.com/gogo/protobuf v1.3.2 // indirect
 	github.com/golang/groupcache v0.0.0-20200121045136-8c9f03a8e57e // indirect
-	github.com/golang/protobuf v1.4.3
+	github.com/golang/protobuf v1.5.2
 	github.com/gomodule/redigo v2.0.0+incompatible
 	github.com/google/uuid v1.2.0 // indirect
 	github.com/gookit/color v1.3.6
@@ -38,20 +40,22 @@ require (
 	github.com/juju/ratelimit v1.0.1
 	github.com/ledongthuc/pdf v0.0.0-20200323191019-23c5852adbd2
 	github.com/prometheus/client_golang v1.9.0 // indirect
+	github.com/shirou/gopsutil v3.21.6+incompatible // indirect
+	github.com/spf13/viper v1.8.1 // indirect
 	github.com/tmc/grpc-websocket-proxy v0.0.0-20201229170055-e5319fda7802 // indirect
+	github.com/uber/h3-go/v3 v3.7.1 // indirect
 	github.com/xuri/efp v0.0.0-20210128032744-13be4fd5dcb5 // indirect
+	github.com/zouyx/agollo/v4 v4.0.4 // indirect
 	go.uber.org/multierr v1.6.0 // indirect
-	go.uber.org/zap v1.16.0 // indirect
 	golang.org/x/crypto v0.0.0-20210220033148-5ea612d1eb83 // indirect
-	golang.org/x/net v0.0.0-20210226172049-e18ecbb05110
-	golang.org/x/sync v0.0.0-20201207232520-09787c993a3a
-	golang.org/x/sys v0.0.0-20210303074136-134d130e1a04 // indirect
-	golang.org/x/text v0.3.5 // indirect
+	golang.org/x/net v0.0.0-20210405180319-a5a99cb37ef4
+	golang.org/x/sync v0.0.0-20210220032951-036812b2e83c
+	golang.org/x/sys v0.0.0-20210630005230-0f9fa26af87c // indirect
+	golang.org/x/text v0.3.6 // indirect
 	golang.org/x/time v0.0.0-20210220033141-f8bda1e9f3ba // indirect
-	google.golang.org/genproto v0.0.0-20210302174412-5ede27ff9881 // indirect
-	google.golang.org/grpc v1.34.0
-	gorm.io/driver/mysql v1.0.4 // indirect
-	gorm.io/gorm v1.21.3 // indirect
+	google.golang.org/grpc v1.38.0
+	gorm.io/driver/mysql v1.0.4
+	gorm.io/gorm v1.21.3
 	sigs.k8s.io/yaml v1.2.0 // indirect
 	stathat.com/c/consistent v1.0.0
 )
