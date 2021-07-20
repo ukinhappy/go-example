@@ -6,6 +6,7 @@ import (
 	"github.com/zouyx/agollo/v4"
 	"github.com/zouyx/agollo/v4/env/config"
 	"github.com/zouyx/agollo/v4/storage"
+	"time"
 )
 
 type Config struct {
@@ -16,9 +17,9 @@ var apolloClient *agollo.Client
 
 func init() {
 	var conf = &config.AppConfig{
-		AppID:          "apollo-20210706",
+		AppID:          "",
 		Cluster:        "default",
-		IP:             "http://106.54.227.205:8080",
+		IP:             "",
 		NamespaceName:  "application",
 		IsBackupConfig: true,
 		Secret:         "",
@@ -31,17 +32,20 @@ func init() {
 	if err != nil {
 		panic(err)
 	}
+	time.Sleep(time.Second)
 }
 
 func main() {
 	cache := apolloClient.GetConfigCache("application")
+
 	//增加变更的监听回调
-	apolloClient.AddChangeListener(change{})
+	//apolloClient.AddChangeListener(change{})
 	dbConf, err := cache.Get("base")
 	if err != nil {
 		panic(err)
 	}
 
+	return
 	var cfg Config
 	json.Unmarshal([]byte(dbConf.(string)), &cfg)
 	fmt.Println(cfg)
