@@ -3,10 +3,11 @@ package main
 import (
 	"database/sql"
 	"fmt"
-	"gorm.io/driver/mysql"
-	"gorm.io/gorm"
+	"github.com/jinzhu/gorm"
 	"log"
 	"time"
+
+	_ "github.com/go-sql-driver/mysql"
 )
 
 type User struct {
@@ -19,33 +20,57 @@ type User struct {
 	ActivedAt    sql.NullTime
 }
 
+var db *gorm.DB
+
+type ukinhappytest struct {
+	ID     int
+	Filed1 int `gorm:"column:filed1"`
+	Filed2 int `gorm:"column:filed2"`
+}
+
 func main() {
+	var err error
 	// 参考 https://github.com/go-sql-driver/mysql#dsn-data-source-name 获取详情
-	dsn := "root:MYSQL123456@tcp(127.0.0.1:3306)/gozero?charset=utf8mb4&parseTime=True&loc=Local"
-	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
+	dsn := "root:MYSQL123456@tcp(127.0.0.1:3306)/ukinhappy_test?charset=utf8&parseTime=True&loc=Local"
+	db, err = gorm.Open("mysql", dsn)
 	if err != nil {
-		log.Fatal(err)
-	}
-	db.AutoMigrate(&User{})
-
-	u1:=&User{Name: "n1",Email: "e1"}
-	result := db.Create(u1)
-	fmt.Println(u1)
-	fmt.Println(result.Error, result.RowsAffected)
-
-
-	//批量插入
-	var users = []User{{Name: "jinzhu1"}, {Name: "jinzhu2"}, {Name: "jinzhu3"}}
-	db.Create(&users)
-	for _, user := range users {
-		fmt.Println(user.ID)
+		log.Fatal("open", err)
 	}
 
-	//
-	db.Model(u1).Update("name","N1")
-	db.Model(&User{}).Update("name","N1")
+	db.DB().SetMaxOpenConns(100)
+	db.LogMode(true)
 
-	//查询
-	result =db.Last(u1)
-	fmt.Println(u1)
+	for i := 0; i < 4; i++ {
+		go func() {
+			if err := db.Table("ukinhappy_test").Where("id=?", 1).
+				Update("filed1", 1).
+				Update("filed2", 1).Error; err != nil {
+				log.Fatal("update 1 ", err)
+			}
+		}()
+	}
+
+	for i := 0; i < 3; i++ {
+		go func() {
+			if err := db.Table("ukinhappy_test").Where("id=?", 1).
+				Update("filed1", 2).
+				Update("filed2", 2).Error; err != nil {
+				log.Fatal("update 2 ", err)
+			}
+		}()
+	}
+
+	for i := 0; i < 3; i++ {
+		var value ukinhappytest
+		if err := db.Table("ukinhappy_test").Where("id=?", 1).First(&value).Error; err != nil {
+			log.Fatal("query", err.Error)
+		}
+		if value.Filed1 != value.Filed2 {
+			fmt.Println(value)
+		}
+
+
+	}
+
+	time.Sleep(time.Minute)
 }
