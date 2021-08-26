@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/gomodule/redigo/redis"
 	"time"
 )
 
@@ -22,27 +23,23 @@ func NewMutex(resourceName string) *Mutex {
 
 //Lock mutex lock
 func (m *Mutex) Lock(lockTime int64) bool {
-	p := dial()
-	result, err := p.Get().Do("SetNX", m.ResourceName, m.Token, time.Duration(lockTime)*time.Second))
+	p := dial("", "")
+	result, err := redis.Bool(p.Get().Do("SetNX", m.ResourceName, m.Token, time.Duration(lockTime)*time.Second))
 	if err != nil {
 		return false
 	}
-	return result.Val()
+	return result
 }
 
 //UnLock mutex unlock
 func (m *Mutex) UnLock() bool {
-	p := dial()
-	result, err := p.Get().Do("Eval", m.luaScripts(), []string{m.ResourceName}, m.Token)
+	p := dial("", "")
+	result, err := redis.Int(p.Get().Do("Eval", m.luaScripts(), []string{m.ResourceName}, m.Token))
 	if err != nil {
 		return false
 	}
-	if v, ok := result.Val().(int64); ok {
-		if v == 1 {
-			return true
-		} else {
-			return false
-		}
+	if result == 1 {
+		return true
 	}
 	return false
 }

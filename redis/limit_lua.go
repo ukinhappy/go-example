@@ -69,7 +69,7 @@ redis.call('pexpire',KEYS[1],math.ceil(reverse_time*(max_token-current_token)+(c
 return result`
 
 	var wait sync.WaitGroup
-	p := dial()
+	p := dial("", "")
 	for i := 0; i < 8; i++ {
 		wait.Add(1)
 		go func() {
@@ -104,7 +104,7 @@ else
 end`
 
 	var wait sync.WaitGroup
-	p := dial()
+	p := dial("", "")
 	for i := 0; i < 8; i++ {
 		wait.Add(1)
 		go func() {

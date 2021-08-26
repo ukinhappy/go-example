@@ -3,10 +3,6 @@ package main
 import (
 	"fmt"
 	"github.com/afex/hystrix-go/hystrix"
-	metricCollector "github.com/afex/hystrix-go/hystrix/metric_collector"
-	"github.com/afex/hystrix-go/plugins"
-	"net"
-	"net/http"
 	"time"
 )
 
@@ -30,18 +26,6 @@ func main() {
 
 		}()
 	}
-	collector, err := plugins.NewDatadogCollector("localhost:8125", "/metric")
-	if err != nil {
-		panic(err)
-	}
-	metricCollector.Registry.Register(collector)
-	select {
-
-	}
-	return
-	hystrixStreamHandler := hystrix.NewStreamHandler()
-	hystrixStreamHandler.Start()
-	go http.ListenAndServe(net.JoinHostPort("0.0.0.0", "8081"), hystrixStreamHandler)
 
 	select {}
 }
